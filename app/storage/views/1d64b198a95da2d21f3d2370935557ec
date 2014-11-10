@@ -1,0 +1,1 @@
+/home/kingkong/Projects/php/life/app/views/user/login.blade.php
