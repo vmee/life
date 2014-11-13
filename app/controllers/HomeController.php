@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use Auth, Form, Input, Redirect, Sentry, View, BaseController;
+
 class HomeController extends BaseController {
 
 	/*
@@ -14,6 +18,11 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+
+    public function index()
+    {
+        return View::make('home');
+    }
 
 	public function showWelcome()
 	{

@@ -96,3 +96,10 @@ Route::filter('auth.user', function()
         return Redirect::route('login');
     }
 });
+
+Route::filter('auth.login', function()
+{
+    if ( Sentry::check()) {
+        return Redirect::route('home');
+    }
+});

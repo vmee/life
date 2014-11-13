@@ -31,7 +31,8 @@
         "Former\\FormerServiceProvider",
         "Way\\Generators\\GeneratorsServiceProvider",
         "Cartalyst\\Sentry\\SentryServiceProvider",
-        "Krucas\\Notification\\NotificationServiceProvider"
+        "Krucas\\Notification\\NotificationServiceProvider",
+        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
     ],
     "eager": [
         "Illuminate\\Cookie\\CookieServiceProvider",
@@ -119,7 +120,9 @@
         "translation.loader": "Illuminate\\Translation\\TranslationServiceProvider",
         "validator": "Illuminate\\Validation\\ValidationServiceProvider",
         "validation.presence": "Illuminate\\Validation\\ValidationServiceProvider",
-        "former": "Former\\FormerServiceProvider"
+        "former": "Former\\FormerServiceProvider",
+        "command.ide-helper.generate": "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider",
+        "command.ide-helper.models": "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [
@@ -180,6 +183,9 @@
 
         ],
         "Former\\FormerServiceProvider": [
+
+        ],
+        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider": [
 
         ]
     }

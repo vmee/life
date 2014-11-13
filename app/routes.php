@@ -11,21 +11,24 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
 
-Route::get('user/logout', array('as' => 'logout', 'uses' => 'App\Controllers\AuthController@getLogout'));
-Route::get('user/login', array('as' => 'login', 'uses' => 'App\Controllers\AuthController@getLogin'));
-Route::post('user/login', array('as' => 'login.post', 'uses' => 'App\Controllers\AuthController@postLogin'));
+Route::group(array('before' => 'auth.login'), function()
+{
+    Route::get('user/login', array('as' => 'login', 'uses' => 'App\Controllers\AuthController@getLogin'));
+    Route::get('user/register', array('as' => 'register', 'uses' => 'App\Controllers\AuthController@getRegister'));
+    Route::post('user/login', array('as' => 'login.post', 'uses' => 'App\Controllers\AuthController@postLogin'));
+    Route::post('user/register', array('as' => 'register.post', 'uses' => 'App\Controllers\AuthController@postRegister'));
+});
 
 Route::group(array('before' => 'auth.user'), function()
 {
-    Route::any('/', function()
-    {
-        return View::make('hello');
-    });
+    Route::get('user/logout', array('as' => 'logout', 'uses' => 'App\Controllers\AuthController@getLogout'));
+    Route::any('/', array('as' => 'home', 'uses'=>'App\Controllers\HomeController@index'));
+    Route::get('profile', array('as'=>'profile', 'uses'=>'App\Controllers\UserController@profile'));
+
+    Route::get('baby/add', array('as'=>'baby.add', 'uses'=>'App\Controllers\BabyController@add'));
+    Route::post('baby/add', array('as'=>'baby.add.post', 'uses'=>'App\Controllers\BabyController@create'));
+
    // Route::resource('articles', 'App\Controllers\Admin\ArticlesController');
     //Route::resource('pages', 'App\Controllers\Admin\PagesController');
 });

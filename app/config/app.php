@@ -127,7 +127,8 @@ return array(
         'Former\FormerServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
-        'Krucas\Notification\NotificationServiceProvider'
+        'Krucas\Notification\NotificationServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 	),
 
@@ -199,7 +200,7 @@ return array(
         'Confide'           => 'Zizaco\Confide\Facade',
         'Former'            => 'Former\Facades\Former',
         'Sentry'            => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-        'Notification'      => 'Krucas\Notification\Facades\Notification'
+        'Notification'      => 'Krucas\Notification\Facades\Notification',
 	),
 
 );

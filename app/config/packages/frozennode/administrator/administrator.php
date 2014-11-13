@@ -52,10 +52,11 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
-        'Films' => array('films', 'boxoffice'),
-        'actors',
-        'directors',
-        'theaters',
+        //'Films' => array('films', 'boxoffice'),
+        'Users' => array('user','group'),
+        //'actors',
+        //'directors',
+        //'theaters',
         'Settings' => array('settings.site'),
     ),
 
@@ -67,8 +68,8 @@ return array(
 	 */
 	'permission'=> function()
 	{
-        return \Cartalyst\Sentry\Facades\FuelPHP\Sentry::check();
-        //return true;
+        return true;
+        return Sentry::check();
 		//return Auth::check();
 	},
 
@@ -113,7 +114,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'logout_path' => false,
+	'logout_path' => 'user/logout',
 
 	/**
 	 * This is the key of the return path that is sent with the redirection to your login_action. Session::get('redirect') will hold the return URL.

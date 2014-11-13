@@ -28,10 +28,10 @@ return array(
             'title' => 'Image (200 x 150)',
             'type' => 'image',
             'naming' => 'random',
-            'location' => public_path(),
+            'location' => public_path().'/upload/',
             'size_limit' => 2,
             'sizes' => array(
-                array(200, 150, 'crop', public_path() . '/resize/', 100),
+                array(200, 150, 'crop', public_path().'/upload/resize/', 100),
             )
         ),
     ),
@@ -55,7 +55,7 @@ return array(
      */
     'before_save' => function(&$data)
         {
-            $data['site_name'] = $data['site_name'] . ' - The Blurst Site Ever';
+            $data['site_name'] = $data['site_name'];
         },
     /**
      * The permission option is an authentication check that lets you define a closure that should return true if the current user

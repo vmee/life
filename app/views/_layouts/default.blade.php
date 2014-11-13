@@ -2,25 +2,27 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Learn Laravel 4</title>
+    <title>{{Config::get('settings.site_name', 'site')}}</title>
 
     @include('_partials.assets')
 
 </head>
 <body>
-<div class="container">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="/">Learn Laravel 4</a>
-
-                @include('_partials.navigation')
-
-            </div>
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ URL::route('home') }}">{{Config::get('settings.site_name', 'site')}}</a>
         </div>
-    </div>
 
-    <hr>
+        @include('_partials.navigation')
+
+
+    </div>
+</nav>
+
+
+<div class="container">
 
     @yield('main')
 
