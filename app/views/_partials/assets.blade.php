@@ -2,6 +2,7 @@
 <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('bower_components/clockpicker/dist/bootstrap-clockpicker.min.js') }}"></script>
 <script src="{{ URL::asset('bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ URL::asset('bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js') }}"></script>
 
 
 <link href="{{ URL::asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">

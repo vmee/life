@@ -21,6 +21,7 @@ class HomeController extends BaseController {
 
     public function index()
     {
+        \Session::forget('user_baby_id');
         return View::make('home');
     }
 

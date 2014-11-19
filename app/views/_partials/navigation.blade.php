@@ -2,14 +2,15 @@
     <ul class="nav navbar-nav">
         <li class="{{ Request::is('home') ? 'active' : null }}"><a href="{{ URL::route('home') }}"><i class="icon-book"></i>首页</a></li>
 
-        @forelse (Baby::where('user_id','=', Sentry::getUser()->getId())->get() as $baby)
-        <li><a href="{{ URL::route('home') }}">{{ $baby->name }}</a></li>
+        @if (Sentry::check())
+        @forelse (Baby::getUserAllBaby() as $baby)
+        <li  class="{{ $baby->id==\Session::get('user_baby_id') ? 'active' : null }}"><a href="{{ URL::route('baby.home.id', array($baby->id)) }}">{{ $baby->name }}</a></li>
         @empty
         <li><a>你还没添加宝宝,点击加号添加</a></li>
         @endforelse
 
         <li><a href="{{ URL::route('baby.add') }}"><span class="glyphicon glyphicon-plus"></span></a></li>
-
+        @endif
     </ul>
 
     <ul class="nav navbar-nav navbar-right">

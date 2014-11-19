@@ -22,7 +22,7 @@ class Groups extends \Eloquent {
 
         static::creating(function($post)
         {
-            $post->permissions = json_encode(array($post->permission=>1));
+            $post->permissions = json_encode(array($post->permissions=>1));
         });
 
         static::updating(function($post)

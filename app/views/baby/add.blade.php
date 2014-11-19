@@ -8,6 +8,12 @@
 ->rules(['name' => 'required'])
 ->method('POST');}}
 
+@if ($errors->has('baby.add'))
+
+<div class="alert alert-error">{{ $errors->first('baby.add', ':message') }}</div>
+
+@endif
+
 {{Former::xlarge_text('name')
 ->required()->autofocus();}}
 
@@ -35,7 +41,9 @@
 <script type="text/javascript">
 $(function(){
     $('#birth_date').datepicker({
-        autoclose: true
+        autoclose: true,
+        language: "zh-CN",
+        format:"yyyy-mm-dd"
     });
     $('#birth_time').clockpicker({
         autoclose: true

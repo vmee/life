@@ -21,7 +21,7 @@ return array(
                     $output = '';
                     if(!is_array($keyArr)) return $value;
                     foreach($keyArr as $k=>$v){
-                        if($v) $output .= $permissionsNames[$k].' ';
+                        if($v && isset($permissionsNames[$k])) $output .= $permissionsNames[$k].' ';
                     }
 
                     return $output;

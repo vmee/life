@@ -7,11 +7,25 @@ use Auth, BaseController, Form, Input, Redirect, Sentry, View;
 class BabyController extends \BaseController {
 
     public function add(){
-
-        //if($validation->fails()) {
-          //  Former::withErrors($validation);
             return View::make('baby.add');
-        //}
+    }
+
+    public function home($id=0){
+
+        if(!$id){
+            $id =  \Session::get('user_baby_id');
+        }elseif(\Baby::isUserBaby($id)){
+            \Session::set('user_baby_id',$id);
+            return Redirect::route('baby.home');
+        }
+        return View::make('baby.home');
+    }
+
+    public function setting(){
+
+        \Former::populate( \Baby::find(\Session::get('user_baby_id')) );
+
+        return View::make('baby.add');
     }
 
 	/**
@@ -34,6 +48,25 @@ class BabyController extends \BaseController {
 	public function create()
 	{
 		//
+
+        $baby = new \Baby();
+        $baby->name = Input::get('name');
+        $baby->birth_date = Input::get('birth_date');
+        $baby->birth_time = Input::get('birth_time');
+        $baby->birth_place = Input::get('birth_place');
+        $baby->sign = Input::get('sign');
+
+
+        if(!$baby->save()){
+            return Redirect::route('baby.add')->withErrors(array('baby.add' => $baby->errors()->all()[0]));
+        }else{
+            \Session::forget('user_babys');
+            return Redirect::route('home');
+        }
+
+
+
+
 	}
 
 	/**
@@ -66,9 +99,21 @@ class BabyController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
 	{
-		//
+        $baby = \Baby::find(\Session::get('user_baby_id'));
+        $baby->name = Input::get('name');
+        $baby->birth_date = Input::get('birth_date');
+        $baby->birth_time = Input::get('birth_time');
+        $baby->birth_place = Input::get('birth_place');
+        $baby->sign = Input::get('sign');
+
+        if(!$baby->save()){
+            return Redirect::route('baby.setting')->withErrors(array('baby.add' => $baby->errors()->all()[0]));
+        }else{
+            \Session::forget('user_babys');
+            return Redirect::route('baby.home');
+        }
 	}
 
 	/**

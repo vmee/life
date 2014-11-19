@@ -19,6 +19,7 @@ class Babys extends Migration {
             $table->increments('id');
             $table->char('name', 16);
             $table->date('birth_date');
+            $table->time('birth_time');
             $table->string('birth_place')->nullable();
             $table->string('sign')->nullable();
             $table->integer('like');

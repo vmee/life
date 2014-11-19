@@ -103,3 +103,8 @@ Route::filter('auth.login', function()
         return Redirect::route('home');
     }
 });
+Route::filter('default.baby', function(){
+   if (! Session::has('user_baby_id') || !\Baby::isUserBaby(Session::get('user_baby_id'))){
+       return Redirect::route('home');
+   }
+});

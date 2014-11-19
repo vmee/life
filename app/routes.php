@@ -29,6 +29,13 @@ Route::group(array('before' => 'auth.user'), function()
     Route::get('baby/add', array('as'=>'baby.add', 'uses'=>'App\Controllers\BabyController@add'));
     Route::post('baby/add', array('as'=>'baby.add.post', 'uses'=>'App\Controllers\BabyController@create'));
 
+    Route::pattern('id', '[0-9]+');
+
+    Route::get('baby/setting', array('before'=>'defaul.baby','as'=>'baby.setting', 'uses'=>'App\Controllers\BabyController@setting'));
+    Route::post('baby/setting', array('before'=>'defaul.baby','as'=>'baby.setting', 'uses'=>'App\Controllers\BabyController@edit'));
+    Route::get('baby/{id}', array('as' => 'baby.home.id', 'uses' => 'App\Controllers\BabyController@home'));
+    Route::get('baby/home', array('before'=>'defaul.baby','as' => 'baby.home', 'uses' => 'App\Controllers\BabyController@home'));
+
    // Route::resource('articles', 'App\Controllers\Admin\ArticlesController');
     //Route::resource('pages', 'App\Controllers\Admin\PagesController');
 });
